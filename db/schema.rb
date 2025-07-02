@@ -10,25 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_06_26_194200) do
-  create_table "tasks", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "description"
-    t.integer "status", default: 0
-    t.integer "todo_lists_id"
-    t.index ["todo_lists_id"], name: "index_tasks_on_todo_lists_id"
-  end
-
+ActiveRecord::Schema[7.1].define(version: 2025_06_26_194200) do
   create_table "todo_items", force: :cascade do |t|
     t.string "title", null: false
     t.string "description"
     t.integer "status", default: 0
-    t.integer "todo_list_id"
+    t.datetime "due_date"
+    t.integer "todo_list_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["due_date"], name: "index_todo_items_on_due_date"
+    t.index ["status"], name: "index_todo_items_on_status"
     t.index ["todo_list_id"], name: "index_todo_items_on_todo_list_id"
   end
 
   create_table "todo_lists", force: :cascade do |t|
     t.string "name", null: false
+    t.text "description"
+    t.integer "status", default: 0
+    t.datetime "due_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["due_date"], name: "index_todo_lists_on_due_date"
+    t.index ["status"], name: "index_todo_lists_on_status"
   end
 
+  add_foreign_key "todo_items", "todo_lists"
 end

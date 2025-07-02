@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Api::TodoItemsController, type: :request do
+RSpec.describe Api::V1::TodoItemsController, type: :request do
   subject(:api_request) { post api_todo_list_todo_items_path(todo_list.id), params:, as: :json }
 
   let(:todo_list) { TodoList.create(name: 'Todo list') }
