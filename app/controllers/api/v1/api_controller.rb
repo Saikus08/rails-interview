@@ -6,8 +6,7 @@ module Api
       include Pagy::Backend
       include Api::Concerns::ActAsApiRequest
       include Api::Concerns::ActAsCrudActions
-      include Api::Concerns::ActAsErrorHandler
-      include Api::Concerns::ActAsParams
+      include Api::Concerns::ActAsApiErrorHandler
       include Api::Concerns::ActAsRenderer
     end
   end

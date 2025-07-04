@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  include ActAsResource
+  include ActAsParams
+
   rescue_from ActiveRecord::RecordNotFound, with: :raise_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :raise_invalid_record
   rescue_from ActionController::UnknownFormat, with: :raise_unknown_format
