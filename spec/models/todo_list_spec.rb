@@ -18,17 +18,6 @@ RSpec.describe TodoList, type: :model do
     end
   end
 
-  describe 'callbacks' do
-    it 'completes all todo_items when status changes to completed' do
-      list = create(:todo_list, status: :incomplete)
-      create_list(:todo_item, 3, todo_list: list, status: :to_do)
-
-      list.status = :completed
-      list.save!
-      expect(list.todo_items.pluck(:status).uniq).to eq(['done'])
-    end
-  end
-
   describe 'scopes' do
     it 'returns only active todo lists' do
       active_list_1 = create(:todo_list, status: :incomplete)
@@ -43,6 +32,18 @@ RSpec.describe TodoList, type: :model do
       create(:todo_list, status: :incomplete)
 
       expect(TodoList.archived).to contain_exactly(archived_list)
+    end
+  end
+
+  describe '#complete_all_items!' do
+    it 'marks all items as done' do
+      list = create(:todo_list)
+      create(:todo_item, todo_list: list, status: :to_do)
+      create(:todo_item, todo_list: list, status: :in_progress)
+
+      list.complete_all_items!
+
+      expect(list.todo_items.pluck(:status).uniq).to eq(['done'])
     end
   end
 end
