@@ -1,0 +1,7 @@
+<%= turbo_stream.replace "todo_items_list_#{@todo_list.id}" do %>
+  <%= render partial: "todo_lists/todo_items", locals: { todo_list: @todo_list.reload } %>
+<% end %>
+
+<%= turbo_stream.replace "todo_list_stats_#{@todo_list.id}" do %>
+  <%= render partial: "todo_lists/stats", locals: { todo_list: @todo_list.reload } %>
+<% end %>

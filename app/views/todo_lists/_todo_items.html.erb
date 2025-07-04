@@ -1,0 +1,5 @@
+<ul>
+  <% todo_list.todo_items.each do |item| %>
+    <%= render partial: "todo_items/todo_item", locals: { todo_item: item } %>
+  <% end %>
+</ul>

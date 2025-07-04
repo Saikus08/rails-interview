@@ -12,4 +12,12 @@ class TodoListsController < ApplicationController
 
     respond_to :html
   end
+
+  def show
+    @todo_list = TodoList.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
+  end
 end

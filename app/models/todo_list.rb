@@ -12,6 +12,14 @@ class TodoList < ApplicationRecord
   validates :description, length: { maximum: 500 }
   validates :due_date, comparison: { greater_than: -> { Time.current } }, allow_blank: true
 
+  def completed_count
+    todo_items.done.count
+  end
+
+  def pending_count
+    todo_items.to_do.count
+  end
+
   def complete_all_items!
     todo_items.where.not(status: :done).update_all(status: TodoItem.statuses[:done])
   end

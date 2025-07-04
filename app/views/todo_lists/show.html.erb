@@ -1,0 +1,17 @@
+<h1><%= @todo_list.name %></h1>
+
+<div data-controller="todo-list">
+  <div id="todo_items_list_<%= @todo_list.id %>">
+    <%= render partial: "todo_lists/todo_items", locals: { todo_list: @todo_list } %>
+  </div>
+
+  <%= form_with url: complete_all_todo_list_todo_items_path(@todo_list),
+                method: :patch,
+                data: { turbo_confirm: "¿Marcar todos como completados?" } do %>
+    <%= submit_tag "Completar todos" %>
+  <% end %>
+
+  <div id="todo_list_stats_<%= @todo_list.id %>">
+    <%= render partial: "todo_lists/stats", locals: { todo_list: @todo_list } %>
+  </div>
+</div>

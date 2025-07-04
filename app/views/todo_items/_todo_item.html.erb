@@ -1,0 +1,7 @@
+<li id="todo_item_<%= todo_item.id %>">
+  <%= form_with url: complete_todo_list_todo_item_path(todo_item.todo_list, todo_item),
+                method: :patch,
+                data: { turbo_stream: true } do |f| %>
+    <%= "#{todo_item.title} #{todo_item.done? ? 'Completado' : 'No completado'}" %>
+  <% end %>
+</li>
