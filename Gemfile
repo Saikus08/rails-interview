@@ -2,9 +2,12 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'rails', '~> 7.1.3'
+
+gem 'active_model_serializers', '~> 0.10'
 gem 'bootsnap', require: false
 gem 'importmap-rails', '~> 1.2'
 gem 'jbuilder', '~> 2.11'
+gem 'pagy', '~> 9.1'
 gem 'puma', '~> 6.4.2'
 gem 'sprockets-rails', '~> 3.4'
 gem 'sqlite3', '~> 1.6.5'
