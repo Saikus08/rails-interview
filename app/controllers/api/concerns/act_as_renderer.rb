@@ -32,8 +32,7 @@ module Api
       def default_serializer_for(object)
         model_class =
           if object.respond_to?(:to_ary)
-            # para arrays o ActiveRecord::Relation
-            object.first.class rescue nil
+            object.first&.class || class_resource rescue nil
           else
             object.class
           end
@@ -42,7 +41,6 @@ module Api
 
         "#{model_class}Serializer".constantize
       end
-
 
       def serializer_options
         {}
