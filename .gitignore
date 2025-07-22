@@ -39,3 +39,4 @@ rails_interview_test
 
 # Ignore byebg files
 .byebug_history
+.yardoc
