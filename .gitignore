@@ -37,6 +37,10 @@ rails_interview_test
 # Ignore coverage files
 /coverage
 
-# Ignore byebg files
+# Ignore byebug files
 .byebug_history
-.yardoc
+
+# Yard
+/.yardoc
+/doc/
+.yardopts
