@@ -16,7 +16,6 @@ gem 'turbo-rails', '~> 1.5'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
-  gem 'byebug', '~> 9.0'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.3'
   gem 'faker', '~> 3.2'
